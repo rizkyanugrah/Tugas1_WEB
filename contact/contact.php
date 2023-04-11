@@ -1,0 +1,102 @@
+<?php
+include '../functions.php';
+session_start();
+if ($_SESSION['status'] != 'login') {
+  header('location: ../index.php?pesan=belum_login');
+}
+?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CONTACT | PLAYSTATION</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div class="container">
+    <nav>
+      <div class="nama">
+        <img src="../assets/img/ps1.png" class="icon" width="35px" height="35px" />
+        <h1 class="nama-web">Anugrah PlayStation</h1>
+      </div>
+      <div class="nav-container">
+        <ul>
+          <li><a href="../home/home.php">Home</a></li>
+          <li><a href="../store/store.php">Store</a></li>
+          <li><a href="../contact/contact.php">Contact</a></li>
+          <li><a href="../logout.php">Logout</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="bg-img"></div>
+
+    <div class="content">
+      <div class="content-centering">
+        <h2>HUBUNGIN KAMI</h2>
+        <form id="form" class="requires-validation">
+          <div class="name">
+            <input type="text" name="nama_lengkap" id="nama_lengkap" placeholder="Nama Lengkap" required />
+          </div>
+          <input type="email" name="email" id="email" placeholder="Email" autocomplete="on" required />
+          <div class="phone">
+            <select name="" id="">
+              <option value="0">+62</option>
+            </select>
+            <input type="number" placeholder="Phone" id="phone" name="phone" required />
+          </div>
+
+          <!-- <input type="text" placeholder="PLAYSTATION YANG INGIN DI SEWA" class="address" /> -->
+          <select class="address" name="jenis_ps" id="jenis_ps" required>
+            <option disabled selected><span style="color: #999;">JENIS PS</span></option>
+            <option value="PLAYSTATION 3">PLAYSTATION 3</option>
+            <option value="PLAYSTATION 4">PLAYSTATION 4</option>
+            <option value="PLAYSTATION 5">PLAYSTATION 5</option>
+          </select>
+
+          <div class="order" id="jenis_kelamin">
+            <span>Jenis Kelamin : </span>
+            <input type="radio" name="jenis_kelamin" value="Laki - Laki" />Laki - Laki
+            <input type="radio" name="jenis_kelamin" value="Perempuan" />Perempuan
+          </div>
+
+          <div class="txtarea">
+            <textarea placeholder="Masukkan Pesan Anda!" cols="30" rows="8" id="pesan" name="pesan"></textarea>
+          </div>
+
+          <!-- <div class="form-check">
+            <input class="" type="checkbox" id="checkbox" required>
+            <label class="" for="checkbox" style="color: aliceblue;">I confirm that all data are correct</label>
+          </div> -->
+
+          <!-- <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+            <label class="form-check-label" style="color: aliceblue;">I confirm that all data are correct</label>
+            <div class="invalid-feedback">Please confirm that the entered data are all correct!</div>
+          </div> -->
+
+          <div style="margin-left: -350px;">
+            <input type="checkbox" name="agree" id="agree_checkbox" value="yes" />
+            <label for="agree_checkbox" style="color: aliceblue;">I confirm that all data are correct</label>
+            <div style="display:none; color:red; font-family: 'Poppins', sans-serif; margin-left: 150px;" id="agree_chk_error">
+              Please confirm that the entered data are all correct!
+            </div>
+          </div>
+
+          <button type="submit" class="btn-submit" name="submit" id="submit">Kirim</button>
+        </form>
+      </div>
+    </div>
+    <footer>
+      <p>&copy; Copyright 2023. Rizky Anugrah.</p>
+    </footer>
+  </div>
+</body>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="contact.js"></script>
+
+</html>
