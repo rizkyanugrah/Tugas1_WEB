@@ -31,10 +31,10 @@ function registrasi($data)
     // enkripsi password atau mengamankan
     $password = password_hash($password, PASSWORD_DEFAULT);
 
+    mysqli_query($conn, "ALTER TABLE users AUTO_INCREMENT = 1");
 
     // tambahkan user baru ke database
     mysqli_query($conn, "INSERT INTO users VALUES('','$email', '$status', '$username', '$password', '$gender') ");
-
     return mysqli_affected_rows($conn);
 }
 
@@ -53,10 +53,7 @@ function login($data)
     if (mysqli_num_rows($result) === 1) {
         $row = mysqli_fetch_assoc($result);
         $pass_verif = password_verify($password, $row['password']);
-        var_dump('password :', $password);
-        var_dump('yg row password :', $row['password']);
         if ($pass_verif != true) {
-            die('pass salah');
             header('location: index.php?pesan=gagal');
         } else {
             session_start();
